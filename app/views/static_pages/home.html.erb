@@ -1,10 +1,12 @@
   <div class="center hero-unit">
     <h1>Welcome to the Kame Docs</h1>
-    <p>
+    <h2>
       ここは文書管理サンプルのページです。</br>
       <a href="http://railstutorial.jp/">Ruby on Rails Tutorial</a>
       を参考にしました。
-    </p>
+    </h2>
+    <%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
+  
   </div>
 
   <%= link_to image_tag("kame.gif", width: "150", alt: "Kameyama"), 'http://akame913.jimdo.com/' %>
