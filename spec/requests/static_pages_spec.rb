@@ -35,8 +35,8 @@ describe "Static pages" do
     click_link "Help"
     expect(page).to have_title(full_title('Help'))
     click_link "Home"
-    click_link "Sign up now!"
-    expect(page).to have_title(full_title('Sign up'))
+    click_link "Sign in now!"
+    expect(page).to have_title(full_title('Sign in'))
     #click_link "kame docs"
     #expect(page).to # ここにコードを記入
   end  

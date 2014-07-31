@@ -12,6 +12,11 @@
       <%= f.label :email %>
       <%= f.text_field :email %>
 
+      <% if current_user.admin? %>
+        <%= f.label :admin %>
+        <%= f.check_box :admin,{:checked => @user.admin}, true, false %>
+      <% end %>
+      
       <%= f.label :password %>
       <%= f.password_field :password %>
 
