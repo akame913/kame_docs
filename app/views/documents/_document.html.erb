@@ -1,0 +1,14 @@
+<div class="documents">
+  <h3>
+    <%= link_to document.name, document_download_path(document) %>
+  </h3>
+  <p><%= document.content_type %></p>
+  <p><%= markdown(document.description) %></p>
+  <% if signed_in? && current_user.admin? %>
+    <h3>
+      <%= link_to "Edit", edit_document_path(document) %><br />
+      <%= link_to "Delete", document, method: :delete,
+                                 data: { confirm: "You sure?" } %>
+    </h3>
+  <% end %>
+</div>

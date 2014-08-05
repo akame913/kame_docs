@@ -1,0 +1,7 @@
+<% provide(:title, 'All documents') %>
+<h1>All documents</h1>
+<%= will_paginate %>
+  <div class="row">
+    <%= render @documents %>
+  </div>
+<%= will_paginate %>

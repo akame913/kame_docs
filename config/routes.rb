@@ -1,6 +1,11 @@
 # encoding: utf-8
 
 KameDocs::Application.routes.draw do
+  #get "documents/new"
+  resources :documents do
+    get :download
+  end
+  
   resources :users
   resources :sessions,      only: [:new, :create, :destroy]
   

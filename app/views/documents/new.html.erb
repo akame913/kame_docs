@@ -1,0 +1,21 @@
+<% provide(:title, 'Upload document') %>
+<h1>Upload document</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@document, 
+                url: {action: 'create'}, 
+                html: {multipart: true}) do |f| %>
+
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.label :description %>      
+      <%= f.text_area :description, rows: 6 %>
+
+      <%= f.label :uploaded_document %>
+      <%= f.file_field :uploaded_document %>
+
+      <%= f.submit "Upload file", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>

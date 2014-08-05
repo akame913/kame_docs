@@ -1,0 +1,13 @@
+<% provide(:title, @document.name) %>
+<div class="row" >
+ <div class="span10 offset1">
+  <h3><%= @document.name %></h3>
+  <p><%= markdown(@document.description) %></p>
+  <p>
+    <% if signed_in? && current_user.admin? %>
+      <%= link_to "Edit", edit_document_path(@document) %>
+  <% end %>
+  </p>
+ </div>
+</div>
+

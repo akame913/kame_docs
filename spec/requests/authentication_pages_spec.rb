@@ -29,13 +29,15 @@ describe "Authentication" do
     end
 
     describe "with valid information" do
-      let(:user) { FactoryGirl.create(:user) }
-      before { sign_in user }
+      let(:admin) { FactoryGirl.create(:admin) }
+      before { sign_in admin }
 
-      it { should have_title(user.name) }
+      it { should have_title(admin.name) }
+      it { should have_link('Profile',     href: user_path(admin)) }
+      it { should have_link('Settings',    href: edit_user_path(admin)) }
       it { should have_link('Users',       href: users_path) }
-      it { should have_link('Profile',     href: user_path(user)) }
-      it { should have_link('Settings',    href: edit_user_path(user)) }
+      it { should have_link('New user',    href: new_user_path) }
+      it { should have_link('New Doc',     href: new_document_path) }
       it { should have_link('Sign out',    href: signout_path) }
       it { should_not have_link('Sign in', href: signin_path) }
 
@@ -44,6 +46,7 @@ describe "Authentication" do
         it { should have_link('Sign in') }
       end
     end
+
   end
 
   describe "authorization" do

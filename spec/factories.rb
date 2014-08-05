@@ -25,6 +25,13 @@ FactoryGirl.define do
     sequence(:image_url)   { |n| "image_#{n}.gif"}
   end    
 
+  factory :document do
+    sequence(:name)         { |n| "Name #{n}" }
+    sequence(:description)  { |n| "Document_#{n} description"} 
+    sequence(:data)         { |n| "data image document_#{n}"}
+    sequence(:content_type) { |n| "text/txt"}
+  end    
+
   factory :picture do
     sequence(:comment)      { |n| "comment #{n}" }
     sequence(:name)         { |n| "test_#{n}.gif"} 
