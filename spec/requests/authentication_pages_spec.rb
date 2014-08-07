@@ -35,9 +35,9 @@ describe "Authentication" do
       it { should have_title(admin.name) }
       it { should have_link('Profile',     href: user_path(admin)) }
       it { should have_link('Settings',    href: edit_user_path(admin)) }
+      it { should have_link('Upload',     href: new_document_path) }
       it { should have_link('Users',       href: users_path) }
       it { should have_link('New user',    href: new_user_path) }
-      it { should have_link('New Doc',     href: new_document_path) }
       it { should have_link('Sign out',    href: signout_path) }
       it { should_not have_link('Sign in', href: signin_path) }
 

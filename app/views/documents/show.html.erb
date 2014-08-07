@@ -3,11 +3,11 @@
  <div class="span10 offset1">
   <h3><%= @document.name %></h3>
   <p><%= markdown(@document.description) %></p>
-  <p>
-    <% if signed_in? && current_user.admin? %>
+  <% if signed_in? && (current_user?(@document.user) || current_user.admin?) %>
+    <p>
       <%= link_to "Edit", edit_document_path(@document) %>
+    </p>
   <% end %>
-  </p>
  </div>
 </div>
 

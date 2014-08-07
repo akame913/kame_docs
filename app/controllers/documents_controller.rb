@@ -1,8 +1,9 @@
 # encoding: utf-8
 
 class DocumentsController < ApplicationController
-  before_action :signed_in_user, only: [:new, :edit, :update, :destroy]
-  before_action :admin_user,     only: [:new, :edit, :update, :destroy]
+  before_action :signed_in_user, only: [:new, :create, :edit]
+  #before_action :correct_user,   only: [:edit]
+  #before_action :admin_user, only: [:edit, :destroy]
   
   def index
     @documents = Document.paginate(page: params[:page], per_page: 10)
@@ -13,7 +14,8 @@ class DocumentsController < ApplicationController
   end
 
   def create
-    @document = Document.new(document_params)
+    #@document = Document.new(document_params)
+    @document = current_user.documents.build(document_params)
     if @document.save
       flash[:success] = "Upload document sucess!"
       redirect_to @document
@@ -59,5 +61,10 @@ class DocumentsController < ApplicationController
     # list through.
     def document_params
       params.require(:document).permit(:description, :uploaded_document)
+    end
+
+    def correct_user
+      @document = current_user.documents.find_by(id: params[:id])
+      redirect_to root_url if @document.nil?
     end
 end

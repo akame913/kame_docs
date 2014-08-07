@@ -6,9 +6,9 @@ describe "Document Pages" do
   subject { page }
   
   describe "index" do
-    #let(:admin) { FactoryGirl.create(:admin) }
+    let(:user) { FactoryGirl.create(:user) }
     before do
-      #sign_in admin
+      sign_in user
       visit documents_path
     end
 
@@ -34,36 +34,25 @@ describe "Document Pages" do
     let(:document) { FactoryGirl.create(:document) }
     before { visit document_path(document) }
 
-#    let(:document) {
-#      post 'documents', {
-#        'document' => {
-#          :description => 'this is description',
-#          :name => 'test-image.gif',
-#          :data => fixture_file_upload("test-image.gif", 'image/gif'),
-#        }
-#      }
-#     }
-        
     it { should have_content(document.name) }
     it { should have_title(document.name) }
   end
   
   describe "Upload document" do
-    let(:admin) { FactoryGirl.create(:admin) }
+    let(:user) { FactoryGirl.create(:user) }
     before do
-      sign_in admin
+      sign_in user
       visit new_document_path
     end
-    before { visit new_document_path }
     
     it { should have_content("Upload document") }
     it { should have_title(full_title("Upload document")) }    
   end
 
   describe "upload" do
-    let(:admin) { FactoryGirl.create(:admin) }
+    let(:user) { FactoryGirl.create(:user) }
     before do
-      sign_in admin
+      sign_in user
       visit new_document_path
     end
 
@@ -103,10 +92,10 @@ describe "Document Pages" do
   end
 
   describe "edit" do
-    let(:admin) { FactoryGirl.create(:admin) }
+    let(:user) { FactoryGirl.create(:user) }
     let(:document) { FactoryGirl.create(:document) }
     before do
-      sign_in admin
+      sign_in user
       visit edit_document_path(document)
     end
 
@@ -129,14 +118,11 @@ describe "Document Pages" do
       let(:new_description)  { "New description" }
       before do
         fill_in "Description",  with: new_description
-        #attach_file "Uploaded document", "#{Rails.root}/spec/test-image.gif"
         click_button "Save changes"
       end
 
-      #it { should have_title('test-image.gif') }
       it { should have_selector('div.alert.alert-success') }
       specify { expect(document.reload.description).to  eq new_description }
     end
   end
-
 end

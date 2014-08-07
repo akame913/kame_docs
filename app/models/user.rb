@@ -1,6 +1,8 @@
 # encoding: utf-8
 
 class User < ActiveRecord::Base
+  has_many :documents
+
   has_secure_password
   before_save { self.email = email.downcase }
   before_create :create_remember_token

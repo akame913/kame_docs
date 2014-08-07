@@ -30,6 +30,12 @@ FactoryGirl.define do
     sequence(:description)  { |n| "Document_#{n} description"} 
     sequence(:data)         { |n| "data image document_#{n}"}
     sequence(:content_type) { |n| "text/txt"}
+    user_id 1
+    #name          "Name"
+    #description   "Document description" 
+    #data          "data document"
+    #content_type  "text/txt"
+    #user_id 1
   end    
 
   factory :picture do
