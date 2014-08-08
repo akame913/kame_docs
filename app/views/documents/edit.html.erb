@@ -6,6 +6,20 @@
     <%= form_for(@document) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
 
+      <%= f.label :group %>
+      <%= f.select :group, {"GROUP1" => "group-1",
+                            "GROUP2" => "group-2",
+                            "GROUP3" => "group-3",
+                            "GROUP4" => "group-4",
+                            "GROUP5" => "group-5"},
+                            :selected => @document.group %>
+
+      <%= f.label :group_dl_allow %>
+      <%= f.check_box :group_dl_allow ,{:checked => @document.group_dl_allow}, true, false %>
+      
+      <%= f.label :other_dl_allow %>
+      <%= f.check_box :other_dl_allow ,{:checked => @document.other_dl_allow}, true, false %>
+      
       <%= f.label :description %>
       <%= f.text_area :description, rows: 6 %>
 

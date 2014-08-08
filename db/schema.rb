@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140805124517) do
+ActiveRecord::Schema.define(version: 20140807234353) do
 
   create_table "documents", force: true do |t|
     t.string   "name"
@@ -21,6 +21,9 @@ ActiveRecord::Schema.define(version: 20140805124517) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.string   "group"
+    t.boolean  "group_dl_allow", default: false
+    t.boolean  "other_dl_allow", default: false
   end
 
   add_index "documents", ["user_id"], name: "index_documents_on_user_id"
@@ -33,6 +36,7 @@ ActiveRecord::Schema.define(version: 20140805124517) do
     t.boolean  "admin",           default: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "group"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

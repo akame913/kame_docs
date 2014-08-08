@@ -1,16 +1,28 @@
 <div class="documents">
-  <h3>
-    <%= link_to document.name, document_download_path(document) %>
-  </h3>
-  <p><%= document.content_type %></p>
-  <p><%= markdown(document.description) %></p>
-  <% if signed_in? && (current_user?(document.user) || current_user.admin?) %>
+ <h3>
+  <%= document.name %>
+ </h3>
+ <div class="span4">
+  <p>Author: <%= document.user.name %></p>
+  <p>Upload: <%= document.created_at %></p>
+  <p>Content:<%= document.content_type %></p>
+  <% if signed_in? %>
     <h3>
-      <%= link_to "Edit", edit_document_path(document) %><br />
+      <% if current_user?(document.user) || document.other_dl_allow || 
+            (document.group_dl_allow && document.group == current_user.group) %>
+        <%= link_to "Download", document_download_path(document) %><br />
+      <% end %>
+      <% if current_user?(document.user) || current_user.admin? %>
+        <%= link_to "Edit", edit_document_path(document) %><br />
+      <% end %>
       <% if current_user.admin? %>
         <%= link_to "Delete", document, method: :delete,
                                  data: { confirm: "You sure?" } %>
       <% end %>
     </h3>
   <% end %>
+ </div>
+ <div class="span4">
+  <p><%= markdown(document.description) %></p>
+ </div>
 </div>

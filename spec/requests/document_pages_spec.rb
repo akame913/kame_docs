@@ -73,6 +73,7 @@ describe "Document Pages" do
 
     describe "with valid information" do
       before do
+        select  "GROUP1",       from: "document_group"
         fill_in "Description",  with: "Example description"
         attach_file "Uploaded document", "#{Rails.root}/spec/kame.gif"
       end
@@ -117,11 +118,13 @@ describe "Document Pages" do
     describe "with valid information" do
       let(:new_description)  { "New description" }
       before do
+        select  "GROUP2",       from: "document_group"
         fill_in "Description",  with: new_description
         click_button "Save changes"
       end
 
       it { should have_selector('div.alert.alert-success') }
+      specify { expect(document.reload.group).to  eq "group-2" }
       specify { expect(document.reload.description).to  eq new_description }
     end
   end

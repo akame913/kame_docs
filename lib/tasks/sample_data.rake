@@ -2,35 +2,44 @@ namespace :db do
   desc "Fill database with sample data"
   task populate: :environment do
     make_users
-    #make_products
+    make_documents
   end
 end
 
 def make_users
   admin = User.create!(name:     "Example User",
-                       email:    "example@railstutorial.jp",
-                       password: "foobar",
+                       group:     "group-1",
+                       email:     "example@railstutorial.jp",
+                       password:  "foobar",
                        password_confirmation: "foobar",
                        admin: true)
-  99.times do |n|
+  5.times do |n|
     name  = Faker::Name.name
+    group = "group-#{n+1}"
     email = "example-#{n+1}@railstutorial.jp"
     password  = "password"
     User.create!(name:     name,
+                 group:    group,
                  email:    email,
                  password: password,
                  password_confirmation: password)
   end
 end
 
-def make_products
-  29.times do |n|
-    title  = "Product Title No.#{n+1}"
-    description = Faker::Lorem.sentence(30)
-    image_url = "DSC01162_#{n+1}.gif"
-    Product.create!(title:       title,
-                 description: description,
-                 image_url:   image_url)
+def make_documents
+  5.times do |n|
+    name  = "document-#{n+1}.txt"
+    user_id = n+1
+    group = "group-#{n+1}"
+    description = "Group#{n+1} sample document"
+    data = "This is text file-No.#{n+1}."
+    content_type = "text/plain" 
+    Document.create!(name:          name,
+                     user_id:        user_id,
+                     group:          group,
+                     group_dl_allow: true,
+                     description:    description,
+                     data:           data,
+                     content_type:   content_type)
   end
 end
-

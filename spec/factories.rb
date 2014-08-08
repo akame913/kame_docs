@@ -5,6 +5,7 @@ include ActionDispatch::TestProcess
 FactoryGirl.define do
   factory :user do
     sequence(:name)  { |n| "Person #{n}" }
+    sequence(:group) { |n| "Group-#{n}" }
     sequence(:email) { |n| "person_#{n}@example.com"}
     password "foobar"
     password_confirmation "foobar"
@@ -27,6 +28,9 @@ FactoryGirl.define do
 
   factory :document do
     sequence(:name)         { |n| "Name #{n}" }
+    sequence(:group)        { |n| "group-#{n}" }
+    group_dl_allow  true
+    other_dl_allow  true
     sequence(:description)  { |n| "Document_#{n} description"} 
     sequence(:data)         { |n| "data image document_#{n}"}
     sequence(:content_type) { |n| "text/txt"}

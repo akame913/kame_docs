@@ -60,7 +60,11 @@ class DocumentsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white
     # list through.
     def document_params
-      params.require(:document).permit(:description, :uploaded_document)
+      params.require(:document).permit(:group, 
+                                       :group_dl_allow,
+                                       :other_dl_allow,
+                                       :description,
+                                       :uploaded_document)
     end
 
     def correct_user

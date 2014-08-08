@@ -1,13 +1,18 @@
 <% provide(:title, @document.name) %>
 <div class="row" >
- <div class="span10 offset1">
-  <h3><%= @document.name %></h3>
-  <p><%= markdown(@document.description) %></p>
+<div class="documents">
+ <h3><%= @document.name %></h3>
+ <div class="span3">
+  <p><%= @document.content_type %></p>
   <% if signed_in? && (current_user?(@document.user) || current_user.admin?) %>
     <p>
       <%= link_to "Edit", edit_document_path(@document) %>
     </p>
   <% end %>
  </div>
+ <div class="span4 offset1">
+  <p><%= markdown(@document.description) %></p>
+ </div>
+</div>
 </div>
 

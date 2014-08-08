@@ -29,7 +29,7 @@ describe "Static pages" do
 
       it "should render the user's document" do
         user.documents.each do |item|
-          expect(page).to have_link(item.name)
+          expect(page).to have_link("Download")
         end
       end
     end

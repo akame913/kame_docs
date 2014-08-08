@@ -10,6 +10,9 @@ describe Document do
     #@document = Document.new(name: "Example Document", description: "yyyy",
     #                 data: "this is data", content_type: "text.abc.txt" )
     @document = user.documents.build(name: "Example Document", 
+                     group: "xxxx",
+                     group_dl_allow: false,
+                     other_dl_allow: false,
                      description: "yyyy",
                      data: "this is data", 
                      content_type: "text.abc.txt" )
@@ -19,6 +22,9 @@ describe Document do
   subject { @document }
 
   it { should respond_to(:name) }
+  it { should respond_to(:group) }
+  it { should respond_to(:group_dl_allow) }
+  it { should respond_to(:other_dl_allow) }
   it { should respond_to(:description) }
   it { should respond_to(:data) }  
   it { should respond_to(:content_type) }  
@@ -35,6 +41,11 @@ describe Document do
 
   describe "when name is not present" do
     before { @document.name = " " }
+    it { should_not be_valid }
+  end
+
+  describe "when group is not present" do
+    before { @document.group = " " }
     it { should_not be_valid }
   end
 

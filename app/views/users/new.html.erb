@@ -9,6 +9,14 @@
       <%= f.label :name %>
       <%= f.text_field :name %>
 
+      <%= f.label :group %>
+      <%= f.select :group, {"GROUP1" => "group-1",
+                            "GROUP2" => "group-2",
+                            "GROUP3" => "group-3",
+                            "GROUP4" => "group-4",
+                            "GROUP5" => "group-5"},
+                            :prompt => "選択してください" %>
+
       <%= f.label :email %>
       <%= f.text_field :email %>
 

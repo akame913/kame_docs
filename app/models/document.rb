@@ -2,7 +2,7 @@
 
 class Document < ActiveRecord::Base
   belongs_to :user
-  validates :name, :description, presence: true
+  validates :name, :description, :group, presence: true
   validates :user_id, presence: true
 
   def uploaded_document=(document_field)

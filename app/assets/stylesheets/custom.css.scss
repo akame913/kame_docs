@@ -178,7 +178,7 @@ aside {
 
 /* forms */
 
-input, textarea, select, .uneditable-input {
+input, textarea, .uneditable-input {
   border: 1px solid #bbb;
   width: 100%;
   padding: 10px;
@@ -253,31 +253,23 @@ aside {
   border-bottom: 1px dotted #77d;
   min-height: 360px;
 
-  img {
-    width:  240px;
-/*    height:  360px; */
-    margin-right: 5px;
-    margin-bottom: 5px;
-    position: absolute;
-  }
-
   h3 {
     font-size: 120%;
     font-family: sans-serif;
-    margin-left: 400px;
+    margin-left: 1em;
     margin-top: 0;
     margin-bottom: 2px;
     color: #227;
   }
 
   .description {
-    margin-left: 400px;
+    margin-left: 0.5em;
     margin-top: 0.5em; 
     margin-bottom: 0.8em; 
   }
   
   p, div.delete_line {
-    margin-left: 400px;
+    margin-left: 0.5em;
     margin-top: 0.5em; 
     margin-bottom: 0.8em; 
 
