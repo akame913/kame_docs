@@ -8,7 +8,8 @@
   <p>Content:<%= document.content_type %></p>
   <% if signed_in? %>
     <h3>
-      <% if current_user?(document.user) || document.other_dl_allow || 
+      <% if current_user.admin? || current_user?(document.user) || 
+            document.other_dl_allow || 
             (document.group_dl_allow && document.group == current_user.group) %>
         <%= link_to "Download", document_download_path(document) %><br />
       <% end %>
