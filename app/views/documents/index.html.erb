@@ -1,5 +1,11 @@
 <% provide(:title, 'All documents') %>
 <h1>All documents</h1>
+<div id="tag_cloud">
+  <% tag_cloud Document.
+  tag_counts_on(:tags).order('count DESC'), %w{css1 css2 css3 css4} do |tag, css_class| %>
+    <%= link_to tag.name, tag_path(tag.name), class: css_class %>
+  <% end %>
+</div>
 <%= will_paginate %>
   <div class="row">
     <%= render @documents %>

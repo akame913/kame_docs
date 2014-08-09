@@ -6,7 +6,11 @@ class DocumentsController < ApplicationController
   #before_action :admin_user, only: [:edit, :destroy]
   
   def index
-    @documents = Document.paginate(page: params[:page], per_page: 10)
+    if params[:tag]
+      @documents = Document.tagged_with(params[:tag]).paginate(page: params[:page], per_page: 10)
+    else
+      @documents = Document.paginate(page: params[:page], per_page: 10)
+    end
   end
   
   def new
@@ -64,7 +68,8 @@ class DocumentsController < ApplicationController
                                        :group_dl_allow,
                                        :other_dl_allow,
                                        :description,
-                                       :uploaded_document)
+                                       :uploaded_document,
+                                       :tag_list)
     end
 
     def correct_user

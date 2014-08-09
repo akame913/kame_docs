@@ -1,7 +1,8 @@
 # encoding: utf-8
 
 KameDocs::Application.routes.draw do
-  #get "documents/new"
+  get 'tags/:tag', to: 'documents#index', as: :tag
+
   resources :documents do
     get :download
   end

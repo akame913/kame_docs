@@ -1,6 +1,7 @@
 # encoding: utf-8
 
 class Document < ActiveRecord::Base
+  acts_as_taggable # acts_as_taggable_on :tags のエイリアス
   belongs_to :user
   validates :name, :description, :group, presence: true
   validates :user_id, presence: true

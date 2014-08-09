@@ -24,6 +24,7 @@
   <% end %>
  </div>
  <div class="span4">
+  <p>Tags:  <%= raw document.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %></p>
   <p><%= markdown(document.description) %></p>
  </div>
 </div>
